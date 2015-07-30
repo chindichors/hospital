@@ -23,9 +23,26 @@ public class HospitalData {
 
     private HospitalData() {
         mapOfHospitals = new HashMap<String, Hospital>();
+        String names [] = {"sdm","kmc","kle","jayadeva","kims"};
+        String ids [] = {"1","2","3","4","5"};
+        String descriptions [] = {"charity", "govt", "partially funded", "private", "govt"};
+        String cities[] = {"dharwad","hubli","belgaum","bangalore","hubballi"};
+        String levels[] = {"medium","low","high","highest","lowest"};
+
+        for(int i=0;i<names.length;i++){
+            Hospital hospital = new Hospital();
+            hospital.setId(ids[i]);
+            hospital.setName(names[i]);
+            hospital.setCity(cities[i]);
+            hospital.setDesc(descriptions[i]);
+            hospital.setLevel(levels[i]);
+            mapOfHospitals.put(ids[i],hospital);
+
+        }
+
     }
 
-    private static Map<String, Hospital> getMapOfHospitals() {
+    public static Map<String, Hospital> getMapOfHospitals() {
         return ourInstance.mapOfHospitals;
     }
 

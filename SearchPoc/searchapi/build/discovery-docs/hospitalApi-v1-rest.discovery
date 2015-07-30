@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/LNOWjlRaqKFpl9ZuFNLiv5qtz-4\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/gGezvbqcpgdCxn6TXxWKhXbkJkA\"",
  "discoveryVersion": "v1",
  "id": "hospitalApi:v1",
  "name": "hospitalApi",
@@ -73,6 +73,21 @@
   }
  },
  "schemas": {
+  "CollectionResponse_Hospital": {
+   "id": "CollectionResponse_Hospital",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Hospital"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
   "Hospital": {
    "id": "Hospital",
    "type": "object",
@@ -125,6 +140,38 @@
     "$ref": "Hospital",
     "parameterName": "resource"
    },
+   "response": {
+    "$ref": "Hospital"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listAll": {
+   "id": "hospitalApi.listAll",
+   "path": "hospital/listAll",
+   "httpMethod": "GET",
+   "response": {
+    "$ref": "CollectionResponse_Hospital"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "searchHospital": {
+   "id": "hospitalApi.searchHospital",
+   "path": "hospital/searchHospital/{name}",
+   "httpMethod": "GET",
+   "parameters": {
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "name"
+   ],
    "response": {
     "$ref": "Hospital"
    },
